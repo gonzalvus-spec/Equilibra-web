@@ -80,7 +80,7 @@ function App() {
             <div className="hero-copy">
               <div className="hero-status-row">
                 <div className="live-badge"><i className="connection-dot" /><b>Protección conectada en tiempo real</b></div>
-                <span className="live-tech"><i />En vivo · RTDB / SPP</span>
+              
               </div>
               <h1>Una caída no debería pasar <em>desapercibida.</em></h1>
               <p className="hero-lead">
@@ -402,7 +402,7 @@ function PhoneRadar() {
 }
 
 function SectionHeading({ number, title, text }: { number: string; title: string; text: string }) {
-  return <div className="section-heading"><span className="section-number">{number}</span><div><h2>{title}</h2><p>{text}</p></div></div>
+  return <div className="section-heading"><span className="section-number">{number}</span><h2>{title}</h2><p>{text}</p></div>
 }
 
 function StepCard({ number, illustration, title, subtitle, text, tags }: { number: string; illustration: ReactNode; title: string; subtitle: string; text: string; tags: string[] }) {
