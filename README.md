@@ -2,8 +2,6 @@
   <img src="./assets/banner.svg" alt="Logo de Equilibra" width="100%" />
 </p>
 
-<h1 align="center">Equilibra Web</h1>
-
 <p align="center">
   <strong>La puerta de entrada web a una red de cuidado que transforma una caída en una alerta accionable.</strong>
 </p>
