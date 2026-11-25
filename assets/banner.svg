@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Equilibra</title>
+  <desc id="desc">Banner animado de Equilibra, asistencia inteligente ante caídas</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071d34"/>
+      <stop offset="0.52" stop-color="#0b2c51"/>
+      <stop offset="1" stop-color="#134075"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#49bce4" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#8ce4fe"/>
+      <stop offset="1" stop-color="#49bce4" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-0.35 0;0.35 0;-0.35 0" dur="7s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#8ce4fe" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#8ce4fe" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#8ce4fe" stroke-opacity="0.07"/>
+    </pattern>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="panel"><rect width="1200" height="320" rx="28"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#panel)">
+    <rect width="1200" height="320" fill="url(#background)"/>
+    <rect width="1200" height="320" fill="url(#grid)"/>
+    <circle cx="1030" cy="120" r="260" fill="url(#halo)">
+      <animate attributeName="r" values="220;280;220" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite"/>
+    </circle>
+
+    <g transform="translate(88 66)">
+      <circle cx="94" cy="94" r="78" fill="none" stroke="#8ce4fe" stroke-opacity="0.15">
+        <animate attributeName="r" values="63;91;63" dur="3.6s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-opacity" values="0.42;0.04;0.42" dur="3.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="94" cy="94" r="61" fill="#8ce4fe" fill-opacity="0.08" stroke="#8ce4fe" stroke-opacity="0.32"/>
+      <path d="M94 42l38 15v31c0 29-15 48-38 59-23-11-38-30-38-59V57z" fill="#134075" stroke="#8ce4fe" stroke-width="3"/>
+      <path d="M72 95h14l8-22 13 43 9-21h15" fill="none" stroke="#8ce4fe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" stroke-dasharray="110" stroke-dashoffset="110">
+        <animate attributeName="stroke-dashoffset" values="110;0;0" keyTimes="0;0.55;1" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <circle cx="131" cy="95" r="4" fill="#8ce4fe" filter="url(#glow)">
+        <animate attributeName="r" values="3;6;3" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <g font-family="Manrope,Segoe UI,Arial,sans-serif">
+      <text x="310" y="133" fill="#ffffff" font-size="64" font-weight="700" letter-spacing="-2">Equilibra</text>
+      <text x="313" y="178" fill="#bcd3e2" font-size="20" font-weight="500" letter-spacing="1">ASISTENCIA INTELIGENTE ANTE CAÍDAS</text>
+      <g transform="translate(313 214)">
+        <circle cx="7" cy="7" r="6" fill="#8ce4fe">
+          <animate attributeName="opacity" values="1;0.35;1" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <text x="25" y="13" fill="#8ce4fe" font-size="16" font-weight="600">Protección conectada en tiempo real</text>
+      </g>
+    </g>
+
+    <path d="M720 238h70l18-22 19 44 23-76 24 54h56l17-31 18 31h106" fill="none" stroke="url(#signal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="430" stroke-dashoffset="430" filter="url(#glow)">
+      <animate attributeName="stroke-dashoffset" values="430;0;0" keyTimes="0;0.7;1" dur="4.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
