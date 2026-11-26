@@ -48,10 +48,7 @@ p { line-height: 1.7; }
 .button-light:hover { background: var(--cyan-soft); border-color: var(--cyan-soft); }
 .button-ghost { background: transparent; border-color: rgba(255,255,255,.32); }
 .button-ghost:hover { background: rgba(255,255,255,.1); }
-.button-outline { background: transparent; color: var(--navy); border-color: var(--line); }
-.button-outline:hover { background: var(--cyan-soft); border-color: #b6deea; }
 .button-small { min-height: 42px; padding-inline: 16px; }
-.button.disabled { cursor: not-allowed; pointer-events: none; background: #edf2f5; border-color: #c8d6df; color: #405d73; }
 
 .hero { position: relative; min-height: 100svh; padding: 112px 0 54px; overflow: hidden; background: var(--navy-dark); color: white; }
 .hero::before { content: ''; position: absolute; inset: 0; opacity: .11; background-image: linear-gradient(rgba(140,228,254,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(140,228,254,.3) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
@@ -138,15 +135,12 @@ p { line-height: 1.7; }
 .download-section .container { position: relative; z-index: 1; }
 .download-section .section-number { width: 40px; height: 28px; box-shadow: inset 0 0 0 1px rgba(73,188,228,.18); font-size: 11px; }
 .download-section .section-heading p { max-width: 700px; margin-top: 17px; font-size: 15px; line-height: 1.7; }
-.download-grid { display: grid; gap: 18px; align-items: stretch; }
+.download-grid { width: min(100%, 680px); margin-inline: auto; display: grid; gap: 18px; align-items: stretch; }
 .download-card { position: relative; padding: 25px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(19,64,117,.12); border-top: 0; border-radius: 18px; background: rgba(255,255,255,.92); box-shadow: 0 12px 34px rgba(19,64,117,.07),0 2px 6px rgba(19,64,117,.04); isolation: isolate; transition: transform .32s cubic-bezier(.2,.8,.2,1),border-color .32s ease,box-shadow .32s ease; }
 .download-card::before { content: ''; position: absolute; z-index: 2; inset: 0 0 auto; height: 5px; background: var(--navy); }
 .download-card::after { content: ''; position: absolute; z-index: -1; width: 180px; height: 180px; top: -90px; right: -80px; border-radius: 50%; background: rgba(19,64,117,.045); transition: transform .45s ease,background .35s ease; }
-.download-card-ios::before { background: linear-gradient(90deg,var(--cyan) 0 62%,var(--navy) 62%); }
-.download-card-ios::after { background: rgba(140,228,254,.14); }
 .download-card-header { display: flex; justify-content: space-between; align-items: center; }
 .platform-icon { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 16px; color: white; background: var(--navy); box-shadow: 0 10px 22px rgba(19,64,117,.18); transition: transform .3s ease,box-shadow .3s ease; }.platform-icon svg { width: 27px; height: 27px; }
-.download-card-ios .platform-icon { color: var(--navy-dark); background: var(--cyan); box-shadow: 0 10px 22px rgba(73,188,228,.2); }
 .status-badge { min-height: 31px; padding: 7px 11px; display: flex; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 99px; font-size: 10px; font-weight: 800; transition: transform .25s ease,box-shadow .25s ease,background .25s ease; }.status-badge i { width: 7px; height: 7px; border-radius: 50%; }.status-badge.available { color: var(--success); border-color: rgba(20,107,74,.1); background: #e6f5ee; }.status-badge.available i { background: var(--success); animation: download-status-pulse 2.2s ease-out infinite; }.status-badge.soon { color: #966000; background: #fff4e0; }.status-badge.soon i { background: #b26a00; }
 .download-card h3 { margin: 25px 0 3px; color: var(--navy-dark); font: 650 36px 'Newsreader',serif; }.version { margin: 0; color: var(--muted); font-size: 11px; font-weight: 650; }.download-description { color: var(--muted); font-size: 14px; }
 .requirement { padding: 14px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.88); transition: border-color .25s ease,background .25s ease; }.requirement > svg { width: 20px; flex: none; color: var(--success); }.requirement b, .requirement small { display: block; }.requirement b { font-size: 11px; }.requirement small { margin-top: 3px; color: var(--muted); font-size: 10px; }
@@ -159,7 +153,6 @@ p { line-height: 1.7; }
   .download-card:hover { transform: translateY(-7px); border-color: rgba(73,188,228,.45); box-shadow: 0 24px 58px rgba(19,64,117,.13),0 4px 10px rgba(19,64,117,.06); }
   .download-card:hover::after { transform: scale(1.18); background: rgba(140,228,254,.15); }
   .download-card:hover .platform-icon { transform: translateY(-2px) rotate(-2deg); box-shadow: 0 14px 26px rgba(19,64,117,.22); }
-  .download-card-ios:hover .platform-icon { box-shadow: 0 14px 27px rgba(73,188,228,.3); }
   .download-card:hover .status-badge { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(20,107,74,.1); background: #def3e9; }
   .permissions span:hover { transform: translateY(-2px); color: var(--navy); border-color: #9fd8e8; background: var(--cyan-soft); }
   .download-actions .button:hover { box-shadow: 0 12px 25px rgba(19,64,117,.18); }
@@ -181,7 +174,7 @@ footer { padding: 56px 0 28px; background: #071d34; color: #9eb4c6; }.footer-gri
   .hero-actions { display: flex; }.hero-actions .button { width: auto; }
   .hero h1 { font-size: 72px; }.hero-lead { font-size: 18px; }
   .trust-grid { grid-template-columns: repeat(4,1fr); }.trust-grid div { border-bottom: 0; }.trust-grid div:nth-child(even) { border-right: 1px solid var(--line); }.trust-grid div:last-child { border-right: 0; }
-  .steps-grid, .download-grid { grid-template-columns: repeat(2, 1fr); }.step-card:last-child { grid-column: 1 / -1; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }.step-card:last-child { grid-column: 1 / -1; }
   .feature-grid { grid-template-columns: 1fr 1fr; }
   .security-banner { grid-template-columns: auto 1fr; }.security-checks { grid-column: 2; grid-template-columns: repeat(3,1fr); }
   .final-grid { grid-template-columns: auto 1fr; }.final-grid .button { grid-column: 2; }
@@ -206,8 +199,6 @@ footer { padding: 56px 0 28px; background: #071d34; color: #9eb4c6; }.footer-gri
 }
 
 /* Hero y flujo ilustrado — mejoras de movimiento progresivas. */
-.button-ios { background: var(--cyan); border-color: var(--cyan); color: var(--navy-dark); box-shadow: 0 10px 28px rgba(140,228,254,.2); }
-.button-ios:hover { background: #b9efff; border-color: #b9efff; color: var(--navy-dark); box-shadow: 0 14px 36px rgba(140,228,254,.32); }
 .hero-copy { animation: hero-enter .75s cubic-bezier(.2,.8,.2,1) both; }
 .hero-visual { animation: hero-enter .85s .12s cubic-bezier(.2,.8,.2,1) both; }
 .live-badge span { animation: status-pulse 2.4s ease-out infinite; }

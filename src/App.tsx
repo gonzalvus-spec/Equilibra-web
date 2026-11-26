@@ -1,7 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import {
   ArrowDown,
-  ArrowRight,
   BellRing,
   Bluetooth,
   Check,
@@ -9,7 +8,6 @@ import {
   Clock3,
   Cloud,
   Download,
-  ExternalLink,
   History,
   LocateFixed,
   LockKeyhole,
@@ -21,7 +19,7 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-import { FaAndroid, FaApple } from 'react-icons/fa'
+import { FaAndroid } from 'react-icons/fa'
 import { downloads, type DownloadLink } from './config/downloads'
 
 const navItems = [
@@ -89,9 +87,6 @@ function App() {
               <div className="hero-actions">
                 <a className="button button-light" href={downloads.android.apk.url} download>
                   <FaAndroid size={20} aria-hidden="true" /> Descargar para Android
-                </a>
-                <a className="button button-ios" href={downloads.ios.ipa.url} download>
-                  <FaApple size={20} aria-hidden="true" /> Descargar para iOS
                 </a>
               </div>
               <div className="hero-proof" aria-label="Tecnologías integradas">
@@ -199,7 +194,7 @@ function App() {
             <SectionHeading
               number="03"
               title="Lleva Equilibra contigo."
-              text="Instala la aplicación según tu teléfono. Android puede funcionar como Estación Base o Monitor Remoto; iPhone funciona como Monitor Remoto."
+              text="Disponible exclusivamente para Android, con todos los modos de Equilibra: Estación Base y Monitor Remoto."
             />
             <div className="download-grid">
               <DownloadCard
@@ -213,21 +208,7 @@ function App() {
                 description="La experiencia completa: conecta el ESP32 por Bluetooth o supervisa de forma remota desde otro teléfono."
                 permissions={['Bluetooth', 'Ubicación', 'Notificaciones']}
                 primary={downloads.android.apk}
-                secondary={downloads.android.googlePlay}
                 instructions="Descarga el APK, permite la instalación desde tu navegador y abre Equilibra. Android te pedirá los permisos necesarios al iniciar."
-              />
-              <DownloadCard
-                platform="iOS"
-                id="ios"
-                icon={<FaApple aria-hidden="true" />}
-                status="Disponible ahora"
-                statusType="available"
-                version={`Versión ${downloads.version} · iOS`}
-                requirement="iPhone con iOS 15 o superior"
-                description="Diseñada para el modo Monitor Remoto: recibe alertas, consulta el mapa y revisa el historial en tiempo real."
-                permissions={['Notificaciones', 'Datos móviles', 'Segundo plano']}
-                primary={downloads.ios.ipa}
-                instructions="Descarga el paquete iOS para usar Equilibra como monitor conectado a Firebase. La conexión directa SPP al sensor permanece disponible en Android."
               />
             </div>
             <div className="install-journey" aria-labelledby="install-journey-title">
@@ -241,7 +222,7 @@ function App() {
                   <span className="install-step-number">01</span>
                   <span className="install-step-icon"><Download /></span>
                   <h4>Descarga la app</h4>
-                  <p>Elige Android o iOS desde los botones oficiales de esta página.</p>
+                  <p>Descarga el APK de Android desde el botón oficial de esta página.</p>
                 </article>
                 <article className="install-step">
                   <span className="install-step-number">02</span>
@@ -310,7 +291,7 @@ function App() {
           <div className="container final-grid">
             <div className="final-logo"><img src="/logo.png" alt="Logo de Equilibra" /></div>
             <div><h2>Más cerca, incluso a la distancia.</h2><p>Descarga Equilibra y convierte cada señal en una oportunidad para acompañar a tiempo.</p></div>
-            <div className="final-actions"><a className="button button-light" href={downloads.android.apk.url} download><FaAndroid /> Android</a><a className="button button-light" href={downloads.ios.ipa.url} download><FaApple /> iOS <ArrowRight /></a></div>
+            <div className="final-actions"><a className="button button-light" href={downloads.android.apk.url} download><FaAndroid /> Descargar para Android</a></div>
           </div>
         </section>
       </main>
@@ -319,7 +300,7 @@ function App() {
         <div className="container footer-grid">
           <div><a className="brand footer-brand" href="#inicio"><span className="brand-mark"><img src="/logo.png" alt="" /></span><span>Equilibra</span></a><p>Sistema de asistencia inteligente para la detección y supervisión de caídas.</p></div>
           <div><b>Producto</b><a href="#como-funciona">Cómo funciona</a><a href="#modos">Modos de uso</a><a href="#seguridad">Seguridad</a></div>
-          <div><b>Descargas</b><a href={downloads.android.apk.url} download>Android APK</a><a href={downloads.ios.ipa.url} download>iOS IPA</a></div>
+          <div><b>Descargas</b><a href={downloads.android.apk.url} download>Android APK</a></div>
           <div><b>Tecnología</b><span>ESP32 + MPU6050</span><span>Flutter + Firebase</span><span>OpenStreetMap</span></div>
         </div>
         <div className="container footer-bottom"><span>© 2026 Equilibra. Tecnología que acompaña.</span><span>Versión del sistema {downloads.version}</span></div>
@@ -409,15 +390,13 @@ function StepCard({ number, illustration, title, subtitle, text, tags }: { numbe
   return <article className="step-card"><div className="step-visual">{illustration}<span className="step-number">{number}</span></div><small>{subtitle}</small><h3>{title}</h3><p>{text}</p><div className="tag-list">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div></article>
 }
 
-function LinkButton({ link, primary, brand }: { link: DownloadLink; primary?: boolean; brand?: 'android' | 'ios' }) {
-  if (!link.url) return <span className={`button ${primary ? '' : 'button-outline'} disabled`} aria-disabled="true">{link.label} · Próximamente</span>
-  const icon = brand === 'ios' ? <FaApple size={19} /> : brand === 'android' ? <FaAndroid size={19} /> : primary ? <Download size={19} /> : <ExternalLink size={18} />
-  return <a className={`button ${primary ? '' : 'button-outline'}`} href={link.url} download={!link.external} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{icon}{link.label}</a>
+function LinkButton({ link }: { link: DownloadLink }) {
+  return <a className="button" href={link.url} download={!link.external} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}><FaAndroid size={19} />{link.label}</a>
 }
 
-function DownloadCard({ platform, id, icon, status, statusType, version, requirement, description, permissions, primary, secondary, instructions }: { platform: string; id: string; icon: ReactNode; status: string; statusType: string; version: string; requirement: string; description: string; permissions: string[]; primary: DownloadLink; secondary?: DownloadLink; instructions: string }) {
+function DownloadCard({ platform, id, icon, status, statusType, version, requirement, description, permissions, primary, instructions }: { platform: string; id: string; icon: ReactNode; status: string; statusType: string; version: string; requirement: string; description: string; permissions: string[]; primary: DownloadLink; instructions: string }) {
   const platformType = platform.toLowerCase()
-  return <article className={`download-card download-card-${platformType}`} id={id}><div className="download-card-header"><span className="platform-icon" aria-hidden="true">{icon}</span><span className={`status-badge ${statusType}`}><i aria-hidden="true" />{status}</span></div><h3>{platform}</h3><p className="version">{version}</p><p className="download-description">{description}</p><div className="requirement"><Check aria-hidden="true" /> <span><b>Compatibilidad</b><small>{requirement}</small></span></div><div className="permissions"><small>PERMISOS CLAVE</small><div>{permissions.map((permission) => <span key={permission}>{permission}</span>)}</div></div><div className={`download-actions ${secondary ? '' : 'single'}`}><LinkButton link={primary} primary brand={platform === 'iOS' ? 'ios' : 'android'} />{secondary && <LinkButton link={secondary} />}</div><div className="install-note"><b>{platform === 'Android' ? 'Instalación rápida' : 'Instalación en iPhone'}</b><p>{instructions}</p></div></article>
+  return <article className={`download-card download-card-${platformType}`} id={id}><div className="download-card-header"><span className="platform-icon" aria-hidden="true">{icon}</span><span className={`status-badge ${statusType}`}><i aria-hidden="true" />{status}</span></div><h3>{platform}</h3><p className="version">{version}</p><p className="download-description">{description}</p><div className="requirement"><Check aria-hidden="true" /> <span><b>Compatibilidad</b><small>{requirement}</small></span></div><div className="permissions"><small>PERMISOS CLAVE</small><div>{permissions.map((permission) => <span key={permission}>{permission}</span>)}</div></div><div className="download-actions single"><LinkButton link={primary} /></div><div className="install-note"><b>Instalación rápida</b><p>{instructions}</p></div></article>
 }
 
 function SensorIllustration() {

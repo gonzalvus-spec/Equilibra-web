@@ -1,13 +1,8 @@
 export type DownloadLink = {
   label: string
-  url: string | null
+  url: string
   external?: boolean
 }
-
-// En producción puede reemplazarse con VITE_IOS_DOWNLOAD_URL o VITE_IOS_MEDIAFIRE_URL.
-export const iosMediafireUrl =
-  import.meta.env.VITE_IOS_MEDIAFIRE_URL ||
-  'https://www.mediafire.com/file/TU_ID_IOS_IPA/equilibra-1.0.0.ipa/file'
 
 export const downloads = {
   version: '1.0.0',
@@ -15,30 +10,7 @@ export const downloads = {
   android: {
     apk: {
       label: 'Descargar APK',
-      url: 'https://www.mediafire.com/file/TU_ID_ANDROID_APK/equilibra-1.0.0.apk/file',
-      external: true,
-    } satisfies DownloadLink,
-    googlePlay: {
-      label: 'Google Play',
-      url: null,
-      external: true,
-    } satisfies DownloadLink,
-  },
-  ios: {
-    available: true,
-    appStore: {
-      label: 'App Store',
-      url: null,
-      external: true,
-    } satisfies DownloadLink,
-    testFlight: {
-      label: 'TestFlight',
-      url: null,
-      external: true,
-    } satisfies DownloadLink,
-    ipa: {
-      label: 'Descargar para iOS',
-      url: iosMediafireUrl,
+      url: 'https://download1078.mediafire.com/swy0uk94nycgZJlKUY8WriCCBjaVlwhUkXi4r57S5kW81ZzGOfensLQpCaYA_c-IWUa1y8iBC097p-b0987Gi9jcTCMcIHKqKYJsSbkeF31NBx7OAqr6iWvmOVroAj5z91wOI-x98X58nrCZmmmXCSnv243cUtMslKmztkGT77M/u9sgj884trbwql1/Equilibra.apk',
       external: true,
     } satisfies DownloadLink,
   },

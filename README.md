@@ -32,7 +32,7 @@ Este repositorio contiene exclusivamente la **landing web**. Las referencias a E
 - Explicación ilustrada del recorrido sensor → estación → monitor remoto.
 - Presentación de los modos **Estación Base** y **Monitor Remoto**.
 - Simulación interactiva del estado de monitoreo y de una alerta de caída.
-- Tarjetas de descarga para Android e iOS con compatibilidad, permisos e instrucciones.
+- Descarga exclusiva para Android con compatibilidad, permisos e instrucciones.
 - Enlaces y versión de las descargas centralizados en `src/config/downloads.ts`.
 - Animaciones CSS, microinteracciones y soporte para `prefers-reduced-motion`.
 - Elementos de accesibilidad como enlace para saltar al contenido, etiquetas ARIA y estados de foco visibles.
@@ -50,7 +50,7 @@ Este repositorio contiene exclusivamente la **landing web**. Las referencias a E
 | [Vite](https://vite.dev/) | Servidor de desarrollo, compilación y previsualización del build. |
 | CSS nativo | Sistema visual responsive, animaciones y variables de diseño. |
 | [Lucide React](https://lucide.dev/) | Iconografía general de la interfaz. |
-| [React Icons](https://react-icons.github.io/react-icons/) | Iconos de Android y Apple. |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icono de Android. |
 | [ESLint](https://eslint.org/) | Análisis estático con reglas para TypeScript, Hooks y React Refresh. |
 | Google Fonts | Familias tipográficas Manrope y Newsreader cargadas desde `index.html`. |
 
@@ -96,15 +96,9 @@ El repositorio incluye `package-lock.json`; para una instalación reproducible:
 npm ci
 ```
 
-### 3. Configurar el entorno (opcional)
+### 3. Configurar la descarga
 
-No se requiere un archivo `.env` para iniciar el sitio. Si necesitas reemplazar el enlace de descarga de iOS, crea `.env.local` en la raíz:
-
-```dotenv
-VITE_IOS_MEDIAFIRE_URL=https://dominio.example/ruta/equilibra.ipa
-```
-
-Solo `VITE_IOS_MEDIAFIRE_URL` es leída actualmente por el código. Los enlaces restantes y la versión se configuran directamente en `src/config/downloads.ts`.
+No se requiere un archivo `.env` para iniciar el sitio. El enlace del APK, la versión y la compilación se configuran directamente en `src/config/downloads.ts`.
 
 ### 4. Iniciar el servidor de desarrollo
 
@@ -141,9 +135,6 @@ npm run preview
 Los canales disponibles se definen en `src/config/downloads.ts`:
 
 - `downloads.android.apk`: enlace externo del APK.
-- `downloads.android.googlePlay`: ficha de Google Play; un valor `null` se muestra como **Próximamente**.
-- `downloads.ios.ipa`: enlace de descarga iOS, reemplazable con `VITE_IOS_MEDIAFIRE_URL`.
-- `downloads.ios.appStore` y `downloads.ios.testFlight`: canales alternativos actualmente configurados como no disponibles.
 - `downloads.version` y `downloads.build`: versión mostrada por la interfaz.
 
 Revisa los enlaces de ejemplo incluidos en esa configuración antes de publicar el sitio.
